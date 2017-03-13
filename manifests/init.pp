@@ -8,9 +8,9 @@ class fail2ban {
   file { '/etc/fail2ban/jail.conf':
     mode   => '0644',
     source => [
-      "puppet:///modules/nfs/conf.${host}",
-      "puppet:///modules/nfs/conf.${operatingsystem}",
+      "puppet:///modules/fail2ban/conf.${host}",
+      "puppet:///modules/fail2ban/conf.${operatingsystem}",
       'puppet:///modules/fail2ban/jail.conf'
     ]
-  }
+  } ~> Service ['fail2ban']
 }
