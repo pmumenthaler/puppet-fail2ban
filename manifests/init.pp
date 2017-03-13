@@ -16,5 +16,5 @@ class fail2ban {
       "puppet:///modules/fail2ban/conf.${operatingsystem}",
       'puppet:///modules/fail2ban/jail.conf'
     ]
-  } ~> Service [$services]
+  } ~> Service[$services]
 }
