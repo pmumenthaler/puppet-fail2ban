@@ -1,0 +1,1 @@
+# puppet-fail2ban
