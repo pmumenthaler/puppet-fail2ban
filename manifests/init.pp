@@ -5,6 +5,10 @@ class fail2ban {
   service { 'fail2ban':
     ensure => 'running';
   }
+  service { 'firewalld':
+    ensure => 'running';
+  }
+  $services = [fail2ban,firewalld]
   file { '/etc/fail2ban/jail.conf':
     mode   => '0644',
     source => [
@@ -12,5 +16,5 @@ class fail2ban {
       "puppet:///modules/fail2ban/conf.${operatingsystem}",
       'puppet:///modules/fail2ban/jail.conf'
     ]
-  } ~> Service ['fail2ban']
+  } ~> Service [$services]
 }
